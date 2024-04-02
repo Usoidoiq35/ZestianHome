@@ -1,0 +1,8 @@
+name: ZestianHome
+version: '1.0'
+main: p.zestianhome.ZestianHome
+api-version: '1.16'
+commands:
+  home:
+    description: Teleport to your home location
+    usage: /home
