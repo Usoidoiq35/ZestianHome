@@ -1,0 +1,34 @@
+#
+#   ██████╗██████╗ ██╗███╗  ██╗███╗  ██╗██╗███╗  ██╗
+#  ██╔════╝██╔══██╗██║████╗ ██║████╗ ██║██║████╗ ██║
+#  ╚█████╗░██████╔╝██║██╔██╗██║██╔██╗██║██║██╔██╗██║
+#   ╚═══██╗██╔═══╝ ██║██║╚████║██║╚████║██║██║╚████║
+#  ██████╔╝██║     ██║██║ ╚███║██║ ╚███║██║██║ ╚███║
+#  ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚══╝╚═╝  ╚══╝╚═╝╚═╝  ╚══╝
+#
+
+database: "jdbc:sqlite:database.db"
+
+messages:
+  prefix: "§x§F§B§2§2§2§2H§x§F§C§4§5§2§Ao§x§F§D§6§8§3§2m§x§F§E§8§B§3§Ae§x§F§F§A§E§4§2s §7» "
+  commands:
+    player-only: "&c¡Este comando solo puede ser ejecutado por un jugador!"
+    gethomesitem-success: "&a¡Has recibido el objeto para establecer tu hogar!"
+    sethome-usage: "&cUso: /sethome <nombre>"
+    sethome-success: "&a¡Hogar &e%name% &aestablecido con éxito!"
+    sethome-error: "&c¡Ha ocurrido un error al establecer el hogar!"
+    sethome-no-permission: "&cNo tienes permiso para establecer un hogar."
+    sethome-max-homes: "&cHas alcanzado el límite máximo de hogares permitidos (%max%)."
+    not-perms: "§x§F§B§3§E§3§E⚠ No tienes permisos para usar este comando."
+    removehome-no-permission: "&cNo tienes permiso para eliminar un hogar."
+    removehome-usage: "&cUso: /removehome <nombre>"
+    removehome-success: "&a¡Hogar &e%name% &aeliminado con éxito!"
+    removehome-error: "&c¡Ha ocurrido un error al eliminar el hogar!"
+  gui:
+    home-deleted: "&a¡El hogar &e%name% &aha sido eliminado!"
+    teleported: "&a¡Has sido teletransportado a &e%name%!"
+    teleport-cooldown: "&c¡Por favor, espera antes de teletransportarte nuevamente!"
+    move-cancel: "&c¡Teleportación cancelada debido a movimiento!"
+    teleporting: "&a¡Teletransportándote a &e%name%...!"
+    error: "&c¡Ha ocurrido un error al obtener los hogares!"
+    no-homes: "&c¡No tienes ningún hogar!"

@@ -1,0 +1,13 @@
+name: ZestianHome
+version: '${project.version}'
+main: p.zestianhome.ZestianHome
+api-version: '1.16'
+author: Spinnin34
+commands:
+  homes:
+    description: Open the homes GUI
+  sethome:
+    description: Set a home
+  delhome:
+    description: delete home
+
