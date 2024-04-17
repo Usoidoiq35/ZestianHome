@@ -3,13 +3,13 @@ package p.zestianhome;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
-import p.zestianhome.commands.GetHomesItemCommand;
 import p.zestianhome.commands.HomesCommand;
 import p.zestianhome.commands.RemoveHomeCommand;
 import p.zestianhome.commands.SetHomeCommand;
 import p.zestianhome.listeners.PlayerListener;
-import p.zestianhome.managers.CooldownManager;
 import p.zestianhome.managers.DatabaseManager;
+
+import java.io.File;
 
 public final class ZestianHome extends JavaPlugin {
     private static ZestianHome instance;
@@ -17,15 +17,16 @@ public final class ZestianHome extends JavaPlugin {
     private DatabaseManager database;
 
 
+
     @Override
     public void onEnable() {
+
         instance = this;
         this.saveDefaultConfig();
         getCommand("homes").setExecutor(new HomesCommand(this));
         getCommand("sethome").setExecutor(new SetHomeCommand(this));
         getCommand("delhome").setExecutor(new RemoveHomeCommand(this));
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
-
 
         try {
             database = new DatabaseManager(this.getConfig().getString("database"));
@@ -45,9 +46,6 @@ public final class ZestianHome extends JavaPlugin {
 
         return prefix + " " + message;
     }
-
-
-
     public DatabaseManager getDatabase() {
         return database;
     }
@@ -55,6 +53,5 @@ public final class ZestianHome extends JavaPlugin {
     public static ZestianHome getInstance() {
         return instance;
     }
-
 }
 

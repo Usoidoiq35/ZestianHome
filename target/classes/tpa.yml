@@ -1,0 +1,48 @@
+#
+#   ██████╗██████╗ ██╗███╗  ██╗███╗  ██╗██╗███╗  ██╗
+#  ██╔════╝██╔══██╗██║████╗ ██║████╗ ██║██║████╗ ██║
+#  ╚█████╗░██████╔╝██║██╔██╗██║██╔██╗██║██║██╔██╗██║
+#   ╚═══██╗██╔═══╝ ██║██║╚████║██║╚████║██║██║╚████║
+#  ██████╔╝██║     ██║██║ ╚███║██║ ╚███║██║██║ ╚███║
+#  ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚══╝╚═╝  ╚══╝╚═╝╚═╝  ╚══╝
+#
+
+messages:
+  no-permission: "&cNo tienes permiso para hacer eso."
+  sent-tpa: "&aPetición de teletransporte enviada."
+  received-tpa: "&aHas recibido una petición de teletransporte."
+  console-cmd: "&cEste comando solo puede ser ejecutado por un jugador."
+  player-offline: "&cEl jugador está desconectado."
+  accept: "&aAceptar"
+  deny: "&cRechazar"
+  no-requests: "&cNo tienes ninguna solicitud de teletransporte pendiente."
+  you-accepted: "&aHas aceptado la solicitud de teletransporte."
+  you-denied: "&cHas rechazado la solicitud de teletransporte."
+  player-accepted: "&a%s ha aceptado tu solicitud de teletransporte."
+  player-denied: "&c%s ha rechazado tu solicitud de teletransporte."
+  player-accepted-timer: "&a%s ha aceptado tu solicitud de teletransporte. Teletransportando en %d segundos..."
+  sent-tpahere: "&aPetición de teletransporte aquí enviada."
+  received-tpahere: "&aHas recibido una petición de teletransporte aquí."
+  tp-msg: "&aTeletransportado exitosamente."
+  tphere-msg: "&aTeletransportado %s a tu ubicación."
+  cant-tp-to-self: "&cNo puedes teletransportarte a ti mismo."
+
+usage-messages:
+  tpa: "&aUso: /tpa <jugador>"
+  tpahere: "&aUso: /tpahere <jugador>"
+  tp: "&aUso: /tp <jugador>"
+  tphere: "&aUso: /tphere <jugador>"
+
+permissions:
+  tpa: "tpa.usar"
+  tpaccept: "tpaccept.usar"
+  tpdeny: "tpdeny.usar"
+  tp: "tp.usar"
+  tphere: "tphere.usar"
+  bypass-delay: "tpa.bypass"
+
+settings:
+  time-delay: true
+  time-to-teleport: 10
+  cooldown: 60
+  cooldown-msg: "&cDebes esperar un momento antes de enviar otra solicitud de teletransporte."

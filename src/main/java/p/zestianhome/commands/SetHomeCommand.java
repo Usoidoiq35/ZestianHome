@@ -24,26 +24,12 @@ public class SetHomeCommand implements CommandExecutor {
         }
 
         // Check if the player has permission to set home
-        if (!player.hasPermission("zestian.home.1") && !player.hasPermission("zestian.home.*")) {
+        if (!hasSetHomePermission(player)) {
             player.sendMessage(plugin.getMessage("commands.sethome-no-permission"));
             return true;
         }
 
-        int maxHomes = 1; // Default maximum number of homes
-        String permission = null;
-
-        // Check if the player has a specific number of homes permission
-        for (String perm : player.getEffectivePermissions().stream()
-                .map(p -> p.getPermission().toLowerCase())
-                .filter(p -> p.startsWith("zestian.home.") && p.length() > "zestian.home.".length())
-                .toArray(String[]::new)) {
-            String numberStr = perm.substring("zestian.home.".length());
-            try {
-                int number = Integer.parseInt(numberStr);
-                maxHomes = Math.max(maxHomes, number);
-            } catch (NumberFormatException ignored) {
-            }
-        }
+        int maxHomes = getMaxHomes(player);
 
         // Check if the player exceeds the maximum number of homes
         try {
@@ -69,5 +55,26 @@ public class SetHomeCommand implements CommandExecutor {
         }
 
         return true;
+    }
+
+    // Método para verificar manualmente el permiso de establecer un home en un número específico
+    private boolean hasSetHomePermission(Player player) {
+        for (int i = 1; i <= 20; i++) {
+            if (player.hasPermission("zestian.home." + i)) {
+                return true;
+            }
+        }
+        return player.hasPermission("zestian.home.*");
+    }
+
+    // Método para obtener el máximo número de homes que un jugador puede tener
+    private int getMaxHomes(Player player) {
+        int maxHomes = 1; // Default maximum number of homes
+        for (int i = 1; i <= 20; i++) {
+            if (player.hasPermission("zestian.home." + i)) {
+                maxHomes = i;
+            }
+        }
+        return maxHomes;
     }
 }
