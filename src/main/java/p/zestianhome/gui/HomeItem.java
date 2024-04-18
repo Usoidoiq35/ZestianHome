@@ -51,9 +51,8 @@ public class HomeItem extends AbstractItem implements Listener {
 
     }
 
-
-    @Override
     public void handleClick(@NotNull ClickType clickType, @NotNull Player player, @NotNull InventoryClickEvent inventoryClickEvent) {
+
         if (clickType.equals(ClickType.DROP)) {
             try {
                 plugin.getDatabase().removeHome(player, name);
@@ -109,7 +108,6 @@ public class HomeItem extends AbstractItem implements Listener {
                 }
             }
         } else {
-
             for (int y = 1; y <= 3; y++) {
                 Block belowBlock = block.getRelative(0, -y, 0);
                 if (belowBlock.getType().isSolid()) {
@@ -118,7 +116,7 @@ public class HomeItem extends AbstractItem implements Listener {
             }
         }
 
-        player.sendMessage(ChatColor.RED + "¡No se pudo encontrar una ubicación segura cerca de la casa!");
+        player.sendMessage(plugin.getMessage("commands.not-safety"));
         return null;
     }
 
@@ -132,29 +130,48 @@ public class HomeItem extends AbstractItem implements Listener {
         isTeleporting = false;
     }
 
-    // Método para realizar el teletransporte
     private void teleport(Player player, Location targetLocation) {
-        player.teleport(targetLocation);
-        player.sendMessage(plugin.getMessage("gui.teleported").replace("%name%", "§x§F§B§D§5§9§3" + name));
+        if (targetLocation != null) {
+            player.teleport(targetLocation);
+            player.sendMessage(plugin.getMessage("gui.teleported").replace("%name%", "§x§F§B§D§5§9§3" + name));
+        }
         isTeleporting = false;
     }
 
-    // Método para iniciar el tiempo de espera antes del teletransporte
+
     private void startTeleportCooldown(Player player) {
         isTeleporting = true;
         player.sendMessage(plugin.getMessage("gui.teleporting").replace("%name%", "§x§F§B§D§5§9§3" + name));
 
+        Location initialLocation = player.getLocation(); // Guardar la ubicación inicial del jugador
+
         Location targetLocation = findSafeLocation(location, player);
 
+        if (targetLocation == null) {
+            isTeleporting = false;
+            return;
+        }
+
+        // Crear una nueva tarea para el teletransporte
         teleportTask = new BukkitRunnable() {
             @Override
             public void run() {
+                // Verificar si el jugador todavía está en modo de teletransporte
                 if (!isTeleporting) {
-                    return; // Si ya se canceló la acción, no hacer nada
+                    return; // Si el teletransporte ya se canceló, no hacer nada
                 }
 
+                // Verificar si el jugador se ha movido de manera significativa
+                Location finalLocation = player.getLocation(); // Obtener la ubicación final del jugador
+                if (initialLocation.distanceSquared(finalLocation) >= 1) { // Se ha movido al menos 1 bloque
+                    cancelTeleport(player);
+                    return;
+                }
+
+                // Teletransportar al jugador
                 teleport(player, targetLocation);
             }
         }.runTaskLater(plugin, 60L); // 60 ticks = 3 segundos
     }
+
 }
