@@ -1,1 +1,3 @@
 # ZestianHome
+
+Plugin pensado para poner hogares tiene un sistema de posicion segura para cancelar el tp cuando no hay lugar seguro ademas de un cooldown y un sistema de movimiento cancelado esto para mejorar el sistema de hogares ademas de eso no cuenta con comandos sino con menu y con la posibilidad de tener mas homes con zestian.home.<numero> asi podras poner el numero de homes que quieres que pueda poner por el momento solo se a testeado hasta el 20 no se recomienda tener mas de 20 ya que emos visto que el menu llega a fallar ademas que tiene conexion sql ose base de datos para guardar los datos de la home en un futuro sera posible mandar solicitud para mandar homes
